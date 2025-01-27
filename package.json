@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@preact/signals": "^2.0.1",
+    "firebase": "^11.2.0",
     "goober": "^2.1.16",
     "preact": "^10.25.3"
   },
