@@ -1,5 +1,5 @@
-import { render, h } from 'preact'
-import { App } from './App'
+import { h, render } from 'preact'
+import { App } from './app.tsx'
 import { setup } from 'goober'
 
 setup(h)

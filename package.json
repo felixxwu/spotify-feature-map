@@ -4,19 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "preview": "tsc && vite build && vite preview"
   },
   "dependencies": {
-    "@preact/signals": "^2.0.1",
+    "@preact/signals": "^1.2.2",
     "firebase": "^11.2.0",
-    "goober": "^2.1.16",
-    "preact": "^10.25.3"
+    "goober": "^2.1.14",
+    "preact": "^10.16.0"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.9.3",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.5"
+    "@preact/preset-vite": "^2.8.1",
+    "typescript": "^5.2.2",
+    "vite": "^6.0.11"
   }
 }
