@@ -9,12 +9,13 @@ export function IconButton<T>({
   size = 36,
   color,
   onClick,
-}: { icon: Icon } & Omit<IconProps<T>, 'container'>) {
-  const { loading, handler } = useLoadingWithMinTimeout(onClick)
+  timeout,
+}: { icon: Icon; timeout?: number } & Omit<IconProps<T>, 'container'>) {
+  const { loading, handler } = useLoadingWithMinTimeout(onClick, timeout)
   const Comp = loading ? SemiCircle : icon
 
   return (
-    <RotationContainer rotating={loading} height={size}>
+    <RotationContainer loading={loading} height={size}>
       <Comp size={size} color={color} onClick={handler} container={Container} />
     </RotationContainer>
   )
@@ -30,11 +31,12 @@ const Container = styled('svg')`
   }
 `
 
-const RotationContainer = styled('div')<{ rotating: boolean; height: number }>`
+const RotationContainer = styled('div')<{ loading: boolean; height: number }>`
+  pointer-events: ${props => (props.loading ? 'none' : 'auto')};
   height: ${props => props.height}px;
 
   & svg {
-    animation: ${props => (props.rotating ? `rotate ${rotationLength}ms linear infinite` : 'none')};
+    animation: ${props => (props.loading ? `rotate ${rotationLength}ms linear infinite` : 'none')};
   }
 
   @keyframes rotate {

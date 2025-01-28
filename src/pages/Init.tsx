@@ -38,7 +38,7 @@ export function Init() {
       <div>
         Connect using your own Client ID
         <br />
-        (Rate limit will apply only to you)
+        (Rate limit will apply only to you - setup required)
       </div>
       <Button label='Next' onClick={() => (page.value = 'ClientIDTutorial')} />
     </Container>

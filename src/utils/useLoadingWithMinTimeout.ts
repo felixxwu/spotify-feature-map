@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks'
 import { sleep } from './sleep.ts'
 
-export function useLoadingWithMinTimeout<T>(onClick?: () => T | Promise<T>, timeout = 150) {
+export function useLoadingWithMinTimeout<T>(onClick?: () => T | Promise<T>, timeout = 0) {
   const [loading, setLoading] = useState(false)
 
   const handler = async () => {

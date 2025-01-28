@@ -1,5 +1,5 @@
-import { post } from './post.ts'
+import { call } from './call.ts'
 
 export async function skipToNext() {
-  return await post('me/player/next')
+  return await call('me/player/next', 'POST')
 }
