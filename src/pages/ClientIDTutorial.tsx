@@ -3,9 +3,11 @@ import { Link } from '../components/Link.tsx'
 import { Button } from '../components/Button.tsx'
 import { useState } from 'preact/hooks'
 import { TextInput } from '../components/TextInput.tsx'
-import { clientID } from '../utils/signals.ts'
+import { clientID, page } from '../utils/signals.ts'
 import { login } from '../api/login.ts'
 import { colors } from '../utils/colors.ts'
+import { LeftArrow } from '../components/Icons.tsx'
+import { IconButton } from '../components/IconButton.tsx'
 
 export function ClientIDTutorial() {
   const [pageNum, setPageNum] = useState(1)
@@ -63,11 +65,20 @@ export function ClientIDTutorial() {
     setPageNum(pageNum + 1)
   }
 
+  const handleBack = () => {
+    if (pageNum === 1) {
+      page.value = 'Init'
+    } else {
+      setPageNum(pageNum - 1)
+    }
+  }
+
   return (
     <Container>
-      <div>
+      <Count>
+        <IconButton icon={LeftArrow} onClick={handleBack} />
         {pageNum}/{pages.length}
-      </div>
+      </Count>
       <div>{pages[pageNum - 1].text}</div>
       <Img src={pages[pageNum - 1].img} alt='Tutorial' onClick={() => setShowBigImg(true)} />
       {showBigImg && (
@@ -90,6 +101,12 @@ const Container = styled('div')`
   flex-direction: column;
   gap: 20px;
   max-width: 400px;
+`
+
+const Count = styled('div')`
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `
 
 const Img = styled('img')`

@@ -3,6 +3,7 @@ import { styled } from 'goober'
 import { Button } from '../components/Button.tsx'
 import { login } from '../api/login.ts'
 import { useReadAuthCallback } from '../api/useReadAuthCallback.ts'
+import { LoadingCircle } from '../components/LoadingCircle.tsx'
 
 export function Init() {
   useReadAuthCallback()
@@ -11,7 +12,7 @@ export function Init() {
   const code = args.get('code')
 
   if (code) {
-    return 'Loading...'
+    return <LoadingCircle />
   }
 
   const handleConnect = async () => {

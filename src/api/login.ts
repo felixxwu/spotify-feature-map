@@ -14,11 +14,18 @@ export async function login() {
 
   codeVerifier.value = code_verifier
 
+  const scopes = [
+    'user-read-private',
+    'user-read-email',
+    'user-modify-playback-state',
+    'user-read-playback-state',
+  ]
+
   const authUrl = new URL('https://accounts.spotify.com/authorize')
   const params = {
     response_type: 'code',
     client_id: clientID.value,
-    scope: 'user-read-private user-read-email user-modify-playback-state',
+    scope: scopes.join(' '),
     code_challenge_method: 'S256',
     code_challenge: code_challenge_base64,
     redirect_uri: window.location.origin,

@@ -16,3 +16,6 @@ export const accessToken = signalWithLocalStorage<string | null>(null, 'accessTo
 export const tokenExpires = signalWithLocalStorage<number | null>(null, 'tokenExpires')
 export const codeVerifier = signalWithLocalStorage<string | null>(null, 'codeVerifier')
 export const page = signal<keyof typeof pages>(accessToken.value ? 'Home' : 'Init')
+export const currentTrack = signal('')
+export const currentArtists = signal('')
+export const playbackDevice = signal('')

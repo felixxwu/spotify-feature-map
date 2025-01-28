@@ -1,33 +1,34 @@
 import { styled } from 'goober'
-import { useState } from 'preact/hooks'
 import { colors } from '../utils/colors.ts'
+import { useLoadingWithMinTimeout } from '../utils/useLoadingWithMinTimeout.ts'
+import { LoadingCircle } from './LoadingCircle.tsx'
 
 export function Button<T>({
   label,
   onClick,
   disabled = false,
+  timeout,
 }: {
   label: string
   onClick: () => T | Promise<T>
   disabled?: boolean
+  timeout?: number
 }) {
-  const [loading, setLoading] = useState(false)
-
-  const handler = async () => {
-    setLoading(true)
-    await onClick()
-    setLoading(false)
-  }
+  const { loading, handler } = useLoadingWithMinTimeout(onClick, timeout)
 
   return (
     <Container onClick={handler} disabled={disabled}>
-      {loading ? 'loading...' : label}
+      {loading ? <LoadingCircle color={colors.bg1} /> : label}
     </Container>
   )
 }
 
 const Container = styled('button')<{ disabled: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 150px;
+  height: 40px;
   padding: 10px;
   background-color: ${colors.accent};
   border: none;
