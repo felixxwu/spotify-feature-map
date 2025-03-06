@@ -24,7 +24,7 @@ export function ClientIDTutorial() {
           in using your spotify account
         </>
       ),
-      img: '/public/tutorial1.webp',
+      img: '/tutorial1.webp',
     },
     {
       text: (
@@ -36,28 +36,28 @@ export function ClientIDTutorial() {
           />
         </>
       ),
-      img: '/public/tutorial2.webp',
+      img: '/tutorial2.webp',
     },
     {
       text: (
         <ol>
           <li>Fill out "App name" and "App description"</li>
           <li>
-            Add <CopyText>https://spotifywithtags.web.app</CopyText> to "Redirect URIs"
+            Add <CopyText>https://spotifyfeaturemap.web.app</CopyText> to "Redirect URIs"
           </li>
           <li>Enable the "Web API" checkbox</li>
           <li>Click "Save"</li>
         </ol>
       ),
-      img: '/public/tutorial3.webp',
+      img: '/tutorial3.webp',
     },
     {
       text: <>From the dashboard, go to "Settings"</>,
-      img: '/public/tutorial4.webp',
+      img: '/tutorial4.webp',
     },
     {
       text: <>In the settings, copy the Client ID and paste it below</>,
-      img: '/public/tutorial5.webp',
+      img: '/tutorial5.webp',
     },
   ]
 
@@ -101,6 +101,12 @@ const Container = styled('div')`
   flex-direction: column;
   gap: 20px;
   max-width: 400px;
+  height: 100svh;
+  padding: 50px;
+
+  & > *:last-child {
+    margin-top: auto;
+  }
 `
 
 const Count = styled('div')`
